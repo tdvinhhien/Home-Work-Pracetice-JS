@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Work</title>
+</head>
+<body>
+    <h2>💡 Tính tổng các số dương</h2>
+    <label for="inputNumbers">Nhập các số (cách nhau bằng dấu phẩy)</label>
+    <input type="text" id="inputNumbers" placeholder="VD: 2, -3, 5, 0, 7, -1" size="40">
+    <br>
+    <button onclick="tinhTongSoDuong()">Tính tổng các số dương</button>
+    <div id="result"></div>
+
+    <h2>Tính tổng các số âm</h2>
+    <label for="inputNumbers-2">Nhập các số (cách nhau bằng dấu phẩy)</label>
+    <input type="text" id="inputNumbers-2" placeholder="VD: 2, -3, 5, 0, 7, -1" size="40">
+    <br>
+    <button onclick="tinhTongSoAm()">Tính tổng các số âm</button>
+    <div id="result-2"></div>
+
+    <h2>💡 Tính tổng các số chia hết cho 3</h2>
+<input type="text" id="inputNumbers-3" placeholder="VD: 3, 6, 9, 12">
+<button onclick="tinhTongChiaHetCho3()">Tính</button>
+<div id="result-3"></div>
+
+
+    <script>
+        function tinhTongSoDuong() {
+            const input = document.getElementById("inputNumbers").value;
+            const numbers = input.split(",").map(item => Number(item.trim()));
+            let tongDuong = 0;
+        
+
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] > 0) {
+                tongDuong += numbers[i];
+            }
+            
+        }
+        document.getElementById("result").innerText = "Tổng số dương là:" + tongDuong;
+    }
+
+    function tinhTongSoAm() {
+        const input = document.getElementById("inputNumbers-2").value;
+        const numbers = input.split(",").map(item => Number(item.trim()));
+        let tongAm = 0;
+
+        for (let i = 0; i < numbers.length; i++){
+            if(numbers[i] < 0){
+            tongAm += numbers[i];}
+        }
+        document.getElementById("result-2").innerText = "Tổng số âm là:" + tongAm;
+    }
+
+    function tinhTongChiaHetCho3() {
+  const input = document.getElementById("inputNumbers-3").value;
+  const numbers = input.split(",").map(item => Number(item.trim()));
+
+  console.log("Mảng đã nhập:", numbers);
+
+  let tong = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    console.log("Đang kiểm tra:", numbers[i]);
+
+    if (numbers[i] % 3 === 0) {
+      tong += numbers[i];
+      console.log("Cộng vào tổng:", tong);
+    }
+  }
+
+  document.getElementById("result-3").innerText = "Tổng các số chia hết cho 3 là: " + tong;
+}
+
+    </script>
+</body>
+</html>
