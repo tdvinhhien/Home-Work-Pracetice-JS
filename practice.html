@@ -6,7 +6,7 @@
     <title>Home Work</title>
 </head>
 <body>
-    <h2>💡 Tính tổng các số dương</h2>
+    <h2> Tính tổng các số dương</h2>
     <label for="inputNumbers">Nhập các số (cách nhau bằng dấu phẩy)</label>
     <input type="text" id="inputNumbers" placeholder="VD: 2, -3, 5, 0, 7, -1" size="40">
     <br>
@@ -20,10 +20,37 @@
     <button onclick="tinhTongSoAm()">Tính tổng các số âm</button>
     <div id="result-2"></div>
 
-    <h2>💡 Tính tổng các số chia hết cho 3</h2>
+    <h2> Tính tổng các số chia hết cho 3</h2>
 <input type="text" id="inputNumbers-3" placeholder="VD: 3, 6, 9, 12">
 <button onclick="tinhTongChiaHetCho3()">Tính</button>
 <div id="result-3"></div>
+
+<!-- // demSoDuong -->
+
+<h2> Đếm số dương trong mảng</h2>
+<label for="inputNumbers-bai2">Nhập các số (cách nhau bằng dấu phẩy hoặc dấu cách):</label>
+<input type="text" id="inputNumbers-bai2" placeholder="VD: -3, 4, 5, -1, 0, 2" size="40">
+<br>
+<button onclick="demSoDuong()">Đếm số dương</button>
+<div id="result-bai2"></div>
+
+<!-- Tìm số nhỏ nhất trong mảng -->
+
+<h2>Tìm số nhỏ nhất trong mảng</h2>
+<label for="inputNumbers-bai3">Nhập các số (cách nhau bằng dấu phẩy):</label>
+<input type="text" placeholder="VD: -3, 4, 5, -1, 0, 2" id="inputNumbers-bai3">
+<br>
+<button onclick="tinhSoNhoNhat()">Tìm số nhỏ nhất</button>
+<div id="result-bai3"></div>
+
+<!-- Tìm số dương nhỏ nhất trong mảng -->
+ <h2>Tìm số dương nhỏ nhất trong mảng</h2>
+    <label for="inputNumbers-bai4">Nhập các số (cách nhau bằng dấu phẩy)</label>
+    <input type="text" id="inputNumbers-bai4" placeholder="VD: 2, -3, 5, 0, 7, -1" size="40">
+    <br>
+    <button onclick="tinhSoDuongNhoNhat()">Tìm số dương nhỏ nhất</button>
+    <div id="result-bai4"></div>
+
 
 
     <script>
@@ -72,6 +99,57 @@
 
   document.getElementById("result-3").innerText = "Tổng các số chia hết cho 3 là: " + tong;
 }
+
+
+//Dem so duong
+function demSoDuong() {
+    const input = document.getElementById("inputNumbers-bai2").value;
+
+    
+    const numbers = input.split(/\s|,/g).map(item => Number(item.trim()));
+
+    console.log("Dữ liệu đã nhập:", numbers);
+
+    let count = 0;
+    for (let i = 0; i < numbers.length; i++) {
+      if (numbers[i] > 0) {
+        count++;
+      }
+    }
+
+    console.log("Số dương đếm được:", count);
+
+    document.getElementById("result-bai2").innerText = "Có " + count + " số dương trong mảng.";
+  }
+
+ // <!-- Tìm số nhỏ nhất trong mảng -->
+
+ function tinhSoNhoNhat(){
+    const input = document.getElementById("inputNumbers-bai3").value;
+    const numbers = input.split(",").map(item => Number(item.trim()));
+    const soNhoNhat = Math.min(...numbers);
+    document.getElementById("result-bai3").innerText = "Số nhỏ nhất trong mảng là:" + soNhoNhat;
+
+ }
+
+ //Tìm số dương nhỏ nhất trong mảng
+
+ function tinhSoDuongNhoNhat(){
+    const input = document.getElementById("inputNumbers-bai4").value;
+    const numbers = input.split(",").map(item => Number(item.trim()));
+    const soDuong = numbers.filter(num => num > 0);
+    
+    let soDuongNhoNhat = -1;
+    if(soDuong.length > 0){
+        soDuongNhoNhat = Math.min(...soDuong);
+
+    }
+    document.getElementById("result-bai4").innerText = "Số dương nhỏ nhất là:" + soDuongNhoNhat;
+ }
+ 
+ 
+
+
 
     </script>
 </body>
